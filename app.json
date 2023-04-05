@@ -1,0 +1,25 @@
+{
+    "name" : "AO3Search",
+    "author" : "简律纯",
+    "namespace" : "AO3Search",
+    "info" : "这是一个基于AO3的随机推文插件",
+    "priority" : 30000,
+    "version" : "0406",
+    "svn" : 1,
+    "compatible_svn" : 101,
+    "message_mode" : "olivos_string",
+    "support" : [
+        {
+            "sdk" : "onebot",
+            "platform" : "qq",
+            "model" : "all"
+        },
+        {
+            "sdk" : "all",
+            "platform" : "all",
+            "model" : "all"
+        }
+    ],
+    "menu_config": [
+    ]
+}
