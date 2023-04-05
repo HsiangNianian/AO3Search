@@ -2,7 +2,7 @@
     "name" : "AO3Search",
     "author" : "简律纯",
     "namespace" : "AO3Search",
-    "info" : "这是一个基于AO3的随机推文插件",
+    "info" : "这是一个基于镜像站\"nightalk.cc\"随机推文的AO3插件\n\n指令格式\n来篇海维文[-h|-help|-E|-Explicit|-M|-Mature]",
     "priority" : 30000,
     "version" : "0406",
     "svn" : 1,
