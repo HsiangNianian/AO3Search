@@ -7,7 +7,8 @@ AO3Search
 这是一个基于镜像站"nightalk.cc"随机推文的AO3插件利用webhook实时监控你的Github仓库
 
 指令(大小写不敏感)
-`来篇海维文[-h|-help|-E|-Explicit|-M|-Mature]
+
+`来篇海维文[-h|-help|-E|-Explicit|-M|-Mature]`
 
 ```ps1
 -h|-help //获取该帮助信息
