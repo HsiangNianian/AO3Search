@@ -41,30 +41,7 @@ class Event(object):
 
 
 def unity_reply(plugin_event, Proc):
-    help_doc = """\
-AO3Search help
-这是一个基于镜像站"nightalk.cc"随机推文的AO3插件
-
-指令(大小写不敏感)
-来篇海维文[-h|-help|-E|-Explicit|-M|-Mature]
-or 来篇海维黄文
-
--h|-help //获取该帮助信息
--E|-Explicit //设置返回Explicit分级内容
--M|-Mature //设置返回Mature分级内容
-"""
-    if plugin_event.data.message.startswith("来篇海维文"):
-        url = f"{base_url}{settings[0]}"
-        if is_string_endwith(plugin_event.data.message, "-M", "-Mature"):
-            url = f"{base_url}{settings[1]}"
-        if is_string_endwith(plugin_event.data.message, "-E", "-Explicit"):
-            url = f"{base_url}{settings[2]}"
-        if is_string_endwith(plugin_event.data.message, "-H", "-Help"):
-            plugin_event.reply(help_doc)
-            return
-    elif plugin_event.data.message == "来篇海维黄文":
-        url = f"{base_url}{settings[random.randint(1, 2)]}"
-
+    def proc(url):
         response = requests.get(url)
 
         if response.status_code != 200:
@@ -98,3 +75,29 @@ or 来篇海维黄文
 
         result = get_random_items(bookmarks)
         plugin_event.reply("\n".join(result))
+        
+    help_doc = """\
+AO3Search help
+这是一个基于镜像站"nightalk.cc"随机推文的AO3插件
+
+指令(大小写不敏感)
+来篇海维文[-h|-help|-E|-Explicit|-M|-Mature]
+or 来篇海维黄文
+
+-h|-help //获取该帮助信息
+-E|-Explicit //设置返回Explicit分级内容
+-M|-Mature //设置返回Mature分级内容
+"""
+    if plugin_event.data.message.startswith("来篇海维文"):
+        url = f"{base_url}{settings[0]}"
+        if is_string_endwith(plugin_event.data.message, "-M", "-Mature"):
+            url = f"{base_url}{settings[1]}"
+        if is_string_endwith(plugin_event.data.message, "-E", "-Explicit"):
+            url = f"{base_url}{settings[2]}"
+        if is_string_endwith(plugin_event.data.message, "-H", "-Help"):
+            plugin_event.reply(help_doc)
+            return
+        proc(url=url)
+    elif plugin_event.data.message == "来篇海维黄文":
+        url = f"{base_url}{settings[random.randint(1, 2)]}"
+        proc(url=url)

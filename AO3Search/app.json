@@ -4,8 +4,8 @@
     "namespace" : "AO3Search",
     "info" : "这是一个基于镜像站\"nightalk.cc\"随机推文的AO3插件\n\n指令格式\n来篇海维文[-h|-help|-E|-Explicit|-M|-Mature]或来篇海维黄文",
     "priority" : 30000,
-    "version" : "0406.post1",
-    "svn" :4 ,
+    "version" : "0406.post2",
+    "svn" :5 ,
     "compatible_svn" : 101,
     "message_mode" : "olivos_string",
     "support" : [
