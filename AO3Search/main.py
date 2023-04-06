@@ -19,6 +19,7 @@ limitations under the License.
 '''
 import re
 import requests
+import random
 import OlivOS
 import AO3Search  # type: ignore
 from AO3Search.util import (  # type: ignore
@@ -46,6 +47,7 @@ AO3Search help
 
 指令(大小写不敏感)
 来篇海维文[-h|-help|-E|-Explicit|-M|-Mature]
+or 来篇海维黄文
 
 -h|-help //获取该帮助信息
 -E|-Explicit //设置返回Explicit分级内容
@@ -60,6 +62,8 @@ AO3Search help
         if is_string_endwith(plugin_event.data.message, "-H", "-Help"):
             plugin_event.reply(help_doc)
             return
+    elif plugin_event.data.message == "来篇海维黄文":
+        url = f"{base_url}{settings[random.randint(1, 2)]}"
 
         response = requests.get(url)
 
@@ -71,6 +75,11 @@ AO3Search help
         title_pattern = re.compile(
             r'<h4 class="heading">.*?<a href=".*?">(.*?)</a>.*?</h4>', re.S
         )
+        
+        author_pattern = re.compile(
+            r'<a rel="author" href="/users/.*?>(.*?)</a>', re.S
+        )
+        
         content_pattern = re.compile(
             r'<blockquote class="userstuff summary">\s*<p>(.*?)</p>', re.S
         )
@@ -80,6 +89,8 @@ AO3Search help
 
         bookmarks = group_lists(
             map_remove_html_tags(title_pattern.findall(response.text)),
+            map_remove_html_tags([f"by {author}" for author in author_pattern.findall(
+                response.text)]),
             map_remove_html_tags(content_pattern.findall(response.text)),
             map_remove_html_tags([f"{base_url}{link}" for link in link_pattern.findall(
                 response.text)]),
