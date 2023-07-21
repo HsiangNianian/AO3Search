@@ -33,11 +33,11 @@ from AO3Search.util import (  # type: ignore
 
 
 class Event(object):
-    def private_message(plugin_event, Proc):
-        unity_reply(plugin_event, Proc)
+    def private_message(self, Proc):
+        unity_reply(self, Proc)
 
-    def group_message(plugin_event, Proc):
-        unity_reply(plugin_event, Proc)
+    def group_message(self, Proc):
+        unity_reply(self, Proc)
 
 
 def unity_reply(plugin_event, Proc):

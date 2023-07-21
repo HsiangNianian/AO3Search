@@ -42,10 +42,7 @@ def group_lists(*lists):
     # 将所有列表按照交叉排列合并
     merged_list = [item for sublist in zip(
         *lists) for item in sublist]
-    # 将元素分组为四个一组
-    grouped_list = [merged_list[i:i+4]
-                    for i in range(0, len(merged_list), 4)]
-    return grouped_list
+    return [merged_list[i : i + 4] for i in range(0, len(merged_list), 4)]
 
 
 def get_random_items(data):
